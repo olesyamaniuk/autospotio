@@ -1,0 +1,74 @@
+document.addEventListener("DOMContentLoaded", () => {
+  const menuBtnRef = document.querySelector("[data-menu-button]");
+  const navListRef = document.querySelector(".i-r-navigation-list");
+  const headerRef = document.querySelector(".i-r-header");
+  const navigationRef = document.querySelector(".i-r-navigation");
+
+  menuBtnRef.addEventListener("click", () => {
+    menuBtnRef.classList.toggle("is-open");
+    navListRef.classList.toggle("is-open");
+    headerRef.classList.toggle("is-open");
+    navigationRef.classList.toggle("is-open");
+  });
+
+  document.querySelectorAll(".i-r-navigation-link").forEach((n) =>
+    n.addEventListener("click", () => {
+      navListRef.classList.remove("is-open");
+      menuBtnRef.classList.remove("is-open");
+      headerRef.classList.remove("is-open");
+      navigationRef.classList.remove("is-open");
+    })
+  );
+});
+
+document.addEventListener("DOMContentLoaded", function () {
+  const popup = document.getElementById("cookie-popup");
+  const acceptButton = document.getElementById("accept-cookies");
+  const declineButton = document.getElementById("decline-cookies");
+
+  if (!localStorage.getItem("cookiesAccepted")) {
+    popup.style.display = "block";
+  }
+
+  acceptButton.onclick = function () {
+    localStorage.setItem("cookiesAccepted", "true");
+    popup.style.display = "none";
+  };
+
+  declineButton.onclick = function () {
+    localStorage.setItem("cookiesAccepted", "false");
+    popup.style.display = "none";
+  };
+});
+document.addEventListener("DOMContentLoaded", function () {
+  const form = document.getElementById("contact-form");
+  const popup = document.getElementById("success-popup");
+
+  form.addEventListener("submit", function (e) {
+    e.preventDefault();
+
+    const formData = new FormData(form);
+
+    fetch("form.php", {
+      method: "POST",
+      body: formData,
+    })
+      .then((response) => {
+        if (!response.ok) throw new Error("Network error");
+        return response.text();
+      })
+      .then(() => {
+        form.reset();
+        popup.classList.remove("hidden");
+        popup.classList.add("show");
+
+        setTimeout(() => {
+          popup.classList.remove("show");
+          popup.classList.add("hidden");
+        }, 3000);
+      })
+      .catch((error) => {
+        console.error("Form error:", error);
+      });
+  });
+});
