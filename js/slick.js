@@ -1,5 +1,5 @@
 $(function () {
-  const $slider = $(".i-r-reviews-list");
+  const $slider = $(".i-u-reviews-list");
 
   $slider.on("init reInit afterChange", function (event, slick, currentSlide) {
     let i = (currentSlide ? currentSlide : 0) + 1;
@@ -17,7 +17,7 @@ $(function () {
     speed: 1000,
     dots: true,
     cssEase: "linear",
-    prevArrow: ".i-r-reviews-list-left",
-    nextArrow: ".i-r-reviews-list-right",
+    prevArrow: ".i-u-reviews-list-left",
+    nextArrow: ".i-u-reviews-list-right",
   });
 });

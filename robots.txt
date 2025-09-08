@@ -3,4 +3,4 @@ Disallow: /admin/
 Disallow: /private/
 Allow: /
 
-Sitemap: https://repairsabe.online/sitemap.xml
+Sitemap: https://autospotio.pro/sitemap.xml
